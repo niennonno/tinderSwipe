@@ -56,7 +56,7 @@ class DraggableViewBackground: UIView, DraggableViewDelegate {
     
     func createDraggableViewWithDataAtIndex(index: NSInteger) -> DraggableView {
         let draggableView = DraggableView(frame: CGRectMake((self.frame.size.width - CARD_WIDTH)/2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT))
-        draggableView.information.text = exampleCardLabels[index]
+        draggableView.askedByNameLabel.text = exampleCardLabels[index]
         draggableView.delegate = self
         return draggableView
     }

@@ -16,7 +16,8 @@ enum GGOverlayViewMode {
 
 class OverlayView: UIView{
     var _mode: GGOverlayViewMode! = GGOverlayViewMode.GGOverlayViewModeLeft
-    var imageView: UIImageView!
+    var imageView: UIView!
+    var text: UILabel!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -25,8 +26,13 @@ class OverlayView: UIView{
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.whiteColor()
-       // imageView = UIImageView(image: UIImage(named: "noButton"))
-      //  self.addSubview(imageView)
+        imageView = UIView(frame: self.frame)
+        text = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 25))
+        text.center = self.center
+        text.textAlignment = .Center
+        text.backgroundColor = .whiteColor()
+        self.addSubview(imageView)
+        imageView.addSubview(text)
     }
     
     func setMode(mode: GGOverlayViewMode) -> Void {
@@ -36,9 +42,11 @@ class OverlayView: UIView{
         _mode = mode
         
         if _mode == GGOverlayViewMode.GGOverlayViewModeLeft {
-         //   imageView.image = UIImage(named: "noButton")
+            imageView.backgroundColor = UIColor.greenColor()
+            text.text = "YO!"
         } else {
-        //    imageView.image = UIImage(named: "yesButton")
+            imageView.backgroundColor = UIColor.redColor()
+            text.text = "NO!"
         }
     }
     
